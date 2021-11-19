@@ -1,4 +1,5 @@
 import React from "react";
+import CartWidget from "../CartWidget/CartWidget";
 
 const Navbar = () => {
 	return (
@@ -18,13 +19,10 @@ const Navbar = () => {
 				>
 					<span className="navbar-toggler-icon"></span>
 				</button>
-				<div
-					className="collapse navbar-collapse justify-content-end"
-					id="navbarNavDropdown"
-				>
+				<div className="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<a className="nav-link active" aria-current="page" href="#">
+							<a className="nav-link" aria-current="page" href="#">
 								Home
 							</a>
 						</li>
@@ -42,6 +40,7 @@ const Navbar = () => {
 								Marketplace
 							</a>
 						</li>
+
 						<li className="nav-item dropdown">
 							<a
 								className="nav-link dropdown-toggle"
@@ -77,6 +76,7 @@ const Navbar = () => {
 					</ul>
 				</div>
 			</div>
+			<CartWidget />
 		</nav>
 	);
 };
