@@ -9,17 +9,8 @@ function App() {
 
 			<ItemListContainer
 				greetings="Coderhouse Project"
-				progress="Components II"
+				progress="Catálogo con MAPS y Promises"
 			/>
-
-			<a
-				className="App-link"
-				href="https://github.com/ricardoyepezz/cursoreact"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Github!
-			</a>
 		</div>
 	);
 }

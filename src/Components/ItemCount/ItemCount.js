@@ -36,23 +36,18 @@ const ItemCount = (props) => {
 	};
 
 	return (
-		<div className="Card">
-			<img src="./Images/icon-cart.svg" className="card-img-top" alt="..." />
-			<div className="card-body">
-				<h5 className="card-title">Producto</h5>
-				<p className="card-text">Ejemplo de Descripción de Producto</p>
-				<button className="btn btn-primary" onClick={disminuir}>
-					-
-				</button>
-				<span className="border border-5">Cantidad: {contador}</span>
-				<button className="btn btn-primary" onClick={agregar}>
-					+
-				</button>
-				<button className="btn btn-info" onClick={onAdd}>
-					Agregar al Carrito
-				</button>
-			</div>
-			<span className="border border-5">Stock Disponible: {props.stock}</span>
+		<div>
+			<button className="btn btn-primary" onClick={disminuir}>
+				-
+			</button>
+			<span className="border border-5">Cantidad: {contador}</span>
+			<button className="btn btn-primary" onClick={agregar}>
+				+
+			</button>
+			<button className="btn btn-info" onClick={onAdd}>
+				Agregar al Carrito
+			</button>
+			<p className="border border-5">Stock Disponible: {props.stock}</p>
 		</div>
 	);
 };
