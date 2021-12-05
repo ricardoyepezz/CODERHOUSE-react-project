@@ -1,6 +1,7 @@
 import "./App.css";
 import Navbar from "./Components/Navbar/Navbar";
 import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./Components/ItemDetail/ItemDetailContainer";
 
 function App() {
 	return (
@@ -9,8 +10,9 @@ function App() {
 
 			<ItemListContainer
 				greetings="Coderhouse Project"
-				progress="Catálogo con MAPS y Promises"
+				progress="Detalle de Producto"
 			/>
+			<ItemDetailContainer />
 		</div>
 	);
 }
