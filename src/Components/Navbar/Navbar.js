@@ -1,13 +1,14 @@
 import React from "react";
 import CartWidget from "../CartWidget/CartWidget";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container-fluid">
-				<a className="navbar-brand" href="#">
+				<Link className="navbar-brand" to={"/"}>
 					REACT PROJECT CODERHOUSE
-				</a>
+				</Link>
 				<button
 					className="navbar-toggler"
 					type="button"
@@ -22,23 +23,19 @@ const Navbar = () => {
 				<div className="collapse navbar-collapse" id="navbarNavDropdown">
 					<ul className="navbar-nav">
 						<li className="nav-item">
-							<a className="nav-link" aria-current="page" href="#">
-								Home
-							</a>
+							<Link className="nav-link" to={"/"}>
+								List
+							</Link>
 						</li>
 						<li className="nav-item">
-							<a
-								className="nav-link"
-								href="https://github.com/ricardoyepezz/cursoreact"
-								target="_blank"
-							>
-								Github
-							</a>
+							<Link className="nav-link" to={"/detail"}>
+								Detail
+							</Link>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">
-								Marketplace
-							</a>
+							<Link className="nav-link" to={"/count"}>
+								Count
+							</Link>
 						</li>
 
 						<li className="nav-item dropdown">
@@ -50,26 +47,21 @@ const Navbar = () => {
 								data-bs-toggle="dropdown"
 								aria-expanded="false"
 							>
-								Resources
+								Categories
 							</a>
 							<ul
 								className="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink"
 							>
 								<li>
-									<a className="dropdown-item" href="#">
-										Prices
-									</a>
+									<Link className="nav-link" to={"/categories/camaras"}>
+										Cámaras
+									</Link>
 								</li>
 								<li>
-									<a className="dropdown-item" href="#">
-										Products
-									</a>
-								</li>
-								<li>
-									<a className="dropdown-item" href="#">
-										Sales
-									</a>
+									<Link className="nav-link" to={"/categories/accesorios"}>
+										Accesorios
+									</Link>
 								</li>
 							</ul>
 						</li>
