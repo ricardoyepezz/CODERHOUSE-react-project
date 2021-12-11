@@ -1,0 +1,7 @@
+.CardItem {
+	margin: 40px;
+	justify-content: center;
+
+	margin-bottom: 10px;
+	border-radius: 25px;
+}

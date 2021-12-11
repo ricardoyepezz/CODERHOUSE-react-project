@@ -1,10 +1,11 @@
 import React from "react";
+import "./Item.css";
 import { Link } from "react-router-dom";
 
 const Item = ({ product }) => {
 	return (
 		<div>
-			<div className="Card">
+			<div className="Card CardItem">
 				<img
 					src={product.img}
 					width="320"
@@ -14,8 +15,13 @@ const Item = ({ product }) => {
 				/>
 				<div className="card-body">
 					<h5 className="card-title">{product.Name}</h5>
-					<p className="card-text">{product.Description}</p>
-					<Link to={`/detail/${product.Id}`}>Ver detalle</Link>
+					<h5 className="card-title">{product.Price}</h5>
+
+					<Link to={`/detail/${product.Id}`}>
+						<button type="button" className="btn btn-dark">
+							Ver detalle
+						</button>
+					</Link>
 				</div>
 			</div>
 		</div>

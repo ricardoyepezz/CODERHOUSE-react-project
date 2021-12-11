@@ -1,34 +1,43 @@
 const products = [
 	{
 		Id: 1,
-		Name: "Producto 1",
-		Description: "Descripción producto 1",
+		Name: "Camara Canon EOS 90D ",
+		Description:
+			"Situada como una cámara versátil con características de foto y video capaces, la Canon EOS 90D es una elegante réflex digital que también se caracteriza por su sensor CMOS APS-C de 32.5MP de alta resolución.",
 		img: "../Images/product1.jpg",
-		Price: "100 Usd",
-		category: "Camaras",
+		Price: "699$ USD",
+		category: "camaras",
 	},
 	{
 		Id: 2,
-		Name: "Producto 2",
-		Description: "Descripción producto 2",
+		Name: "Camara Nikon D7500 ",
+		Description:
+			"Diseñado como un verdadero todoterreno, la Nikon D7500 es una DSLR de formato DX que ofrece un conjunto de características versátiles para atraer a fotógrafos y camarógrafos por igual. Basado en un sensor CMOS de 20.9MP y un procesador de imagen EXPEED 5, este experto multimedia cuenta con una velocidad de disparo continuo de 8 fps para hasta 100 JPEGS consecutivos, un rango de sensibilidad nativo a ISO 51,200 que se puede ampliar hasta ISO 1,640,000 y video 4K UHD y capacidades de grabación de lapso de tiempo. ",
 		img: "../Images/product2.jpg",
-		Price: "200 Usd",
-		category: "Camaras",
+		Price: "750$ USD",
+		category: "camaras",
 	},
 	{
 		Id: 3,
-		Name: "Producto 3",
-		Description: "Descripción producto 3",
+		Name: "Canon, EOS 70D Lens",
+		Description: "Lente para Canon modelo EOS 70D",
 		img: "../Images/product3.jpg",
-		Price: "300 Usd",
-		category: "Accesorios",
+		Price: "290$ USD",
+		category: "accesorios",
 	},
 ];
 
-export const getProducts = () => {
+const categories = [
+	{ id: "camaras", Description: "Cámaras" },
+	{ id: "accesorios", Description: "Accesorios" },
+];
+
+export const getProducts = (category) => {
 	return new Promise((resolve, reject) => {
 		setTimeout(() => {
-			resolve(products);
+			category
+				? resolve(products.filter((product) => product.category === category))
+				: resolve(products);
 		}, 2000);
 	});
 };
@@ -48,12 +57,10 @@ export const getProductById = (Id) => {
 	});
 };
 
-export const getCategories = (Category) => {
+export const getCategories = () => {
 	return new Promise((resolve, reject) => {
-		const categories = products.find(Category);
-
 		setTimeout(() => {
 			resolve(categories);
-		}, 1000);
+		}, 5000);
 	});
 };

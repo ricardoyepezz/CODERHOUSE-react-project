@@ -1,13 +1,23 @@
+import { useState, useEffect } from "react";
 import React from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link } from "react-router-dom";
+import { getCategories } from "../DBProducts/products";
 
 const Navbar = () => {
+	const [categories, setCategories] = useState([]);
+
+	useEffect(() => {
+		getCategories().then((categories) => {
+			setCategories(categories);
+		});
+	}, []);
+
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container-fluid">
 				<Link className="navbar-brand" to={"/"}>
-					REACT PROJECT CODERHOUSE
+					PHOTO PLACE
 				</Link>
 				<button
 					className="navbar-toggler"
@@ -24,17 +34,7 @@ const Navbar = () => {
 					<ul className="navbar-nav">
 						<li className="nav-item">
 							<Link className="nav-link" to={"/"}>
-								List
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to={"/detail"}>
-								Detail
-							</Link>
-						</li>
-						<li className="nav-item">
-							<Link className="nav-link" to={"/count"}>
-								Count
+								Home
 							</Link>
 						</li>
 
@@ -47,21 +47,22 @@ const Navbar = () => {
 								data-bs-toggle="dropdown"
 								aria-expanded="false"
 							>
-								Categories
+								Categorías
 							</a>
 							<ul
 								className="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink"
 							>
 								<li>
-									<Link className="nav-link" to={"/categories/camaras"}>
-										Cámaras
-									</Link>
-								</li>
-								<li>
-									<Link className="nav-link" to={"/categories/accesorios"}>
-										Accesorios
-									</Link>
+									{categories.map((cat) => (
+										<Link
+											className="nav-link"
+											key={cat.id}
+											to={`/category/${cat.id}`}
+										>
+											{cat.Description}
+										</Link>
+									))}
 								</li>
 							</ul>
 						</li>

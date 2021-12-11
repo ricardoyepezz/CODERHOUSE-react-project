@@ -1,18 +1,22 @@
+import "./ItemDetail.css";
+
 const ItemDetail = ({ product }) => {
 	return (
-		<article>
-			<header>
-				<h2>{product?.Name}</h2>
-			</header>
-			<picture>
-				<img src={product?.img} alt={product?.Name} className="ItemImg" />
-			</picture>
-			<section>
-				<p>Categoria: {product?.category}</p>
-				<p>Descripción: {product?.Description}</p>
-				<p>Precio: {product?.Price}</p>
-			</section>
-		</article>
+		<div className="Card CardItem">
+			<h2 className="card-title">{product?.Name}</h2>
+
+			<img
+				src={product?.img}
+				alt={product?.Name}
+				width="320"
+				height="220"
+				className="card-img-top"
+				alt="..."
+			/>
+
+			<p className="card-title">Descripción: {product?.Description}</p>
+			<p className="card-title">Precio: {product?.Price}</p>
+		</div>
 	);
 };
 

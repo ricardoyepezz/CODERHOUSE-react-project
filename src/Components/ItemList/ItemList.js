@@ -5,7 +5,7 @@ const ItemList = ({ products }) => {
 	return (
 		<ul className="d-flex justify-content-sm-around">
 			{products.map((product) => (
-				<Item key={product.id} product={product} />
+				<Item key={product.Id} product={product} />
 			))}
 		</ul>
 	);

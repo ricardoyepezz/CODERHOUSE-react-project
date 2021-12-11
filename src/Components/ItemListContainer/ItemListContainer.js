@@ -2,16 +2,20 @@ import React, { useEffect, useState } from "react";
 import ItemList from "../ItemList/ItemList";
 import { getProducts } from "../DBProducts/products";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
-const ItemListContainer = (props) => {
+const ItemListContainer = () => {
 	const [products, setProducts] = useState([]);
 	const { categoryId } = useParams();
 
 	useEffect(() => {
-		const list = getProducts();
-		list.then((list) => {
-			setProducts(list);
-		});
+		getProducts(categoryId)
+			.then((item) => {
+				setProducts(item);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
 		return () => {
 			setProducts([]);
 		};
@@ -19,19 +23,7 @@ const ItemListContainer = (props) => {
 
 	return (
 		<div>
-			<p className="mt-5">Welcome to {props.greetings}</p>
-			<p className="mb-5">Current Progress: {props.progress}</p>
-			<>
-				<ItemList products={products} />
-			</>
-			<a
-				className="App-link"
-				href="https://github.com/ricardoyepezz/cursoreact"
-				target="_blank"
-				rel="noopener noreferrer"
-			>
-				Github!
-			</a>
+			<ItemList products={products} />
 		</div>
 	);
 };

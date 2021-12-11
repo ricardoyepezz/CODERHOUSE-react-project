@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { getProductById } from "../DBProducts/products";
 import { useParams } from "react-router-dom";
+import Loader from "../Loader/Loader";
 
 const ItemDetailContainer = () => {
 	const [product, setProduct] = useState();
@@ -22,11 +23,7 @@ const ItemDetailContainer = () => {
 		};
 	}, [paramId]);
 
-	return (
-		<div className="ItemDetailContainer">
-			<ItemDetail product={product} />
-		</div>
-	);
+	return <div>{product ? <ItemDetail product={product} /> : <Loader />}</div>;
 };
 
 export default ItemDetailContainer;
