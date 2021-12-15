@@ -1,16 +1,16 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 
-const ItemCount = (props) => {
+const ItemCount = ({ product }) => {
 	const [contador, setContador] = useState(0);
 
 	/*   Función para el botón Agregar */
 
 	const agregar = () => {
-		if (props.stock > 0 && contador < props.stock) {
+		if (product?.stock > 0 && contador < product?.stock) {
 			setContador(contador + 1);
 		}
-		if (contador > props.stock) {
+		if (contador > product?.stock) {
 			setContador(contador === 0);
 		}
 	};
@@ -47,7 +47,7 @@ const ItemCount = (props) => {
 			<button className="btn btn-info" onClick={onAdd}>
 				Agregar al Carrito
 			</button>
-			<p className="border border-5">Stock Disponible: {props.stock}</p>
+			<p className="border border-5">Stock Disponible: {product?.stock}</p>
 		</div>
 	);
 };

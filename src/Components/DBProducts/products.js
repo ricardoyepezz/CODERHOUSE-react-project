@@ -7,6 +7,7 @@ const products = [
 		img: "../Images/product1.jpg",
 		Price: "699$ USD",
 		category: "camaras",
+		stock: "8",
 	},
 	{
 		Id: 2,
@@ -16,6 +17,7 @@ const products = [
 		img: "../Images/product2.jpg",
 		Price: "750$ USD",
 		category: "camaras",
+		stock: "3",
 	},
 	{
 		Id: 3,
@@ -24,6 +26,7 @@ const products = [
 		img: "../Images/product3.jpg",
 		Price: "290$ USD",
 		category: "accesorios",
+		stock: "3",
 	},
 ];
 
