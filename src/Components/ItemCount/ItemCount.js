@@ -1,37 +1,25 @@
 import React, { useState } from "react";
 import "./ItemCount.css";
 
-const ItemCount = ({ product }) => {
+const ItemCount = ({ onAdd }) => {
 	const [contador, setContador] = useState(0);
 
-	/*   Función para el botón Agregar */
+	//Función para el botón Agregar
 
 	const agregar = () => {
-		if (product?.stock > 0 && contador < product?.stock) {
+		const stock = 10;
+		if (stock > 0 && contador < stock) {
 			setContador(contador + 1);
 		}
-		if (contador > product?.stock) {
+		if (contador > stock) {
 			setContador(contador === 0);
 		}
 	};
 
-	/*   Función para el botón Disminuir */
+	//  Función para el botón Disminuir
 	const disminuir = () => {
 		if (contador > 0) {
 			setContador(contador - 1);
-		}
-	};
-
-	/*   Función para el botón Agregar al carrito */
-	const onAdd = () => {
-		if (contador > 1) {
-			console.log(`Se agregaron ${contador} productos.`);
-		}
-		if (contador === 1) {
-			console.log(`Se agregó  ${contador} producto.`);
-		}
-		if (contador === 0) {
-			console.log("No se ha agregado ningún producto.");
 		}
 	};
 
@@ -47,7 +35,6 @@ const ItemCount = ({ product }) => {
 			<button className="btn btn-info" onClick={onAdd}>
 				Agregar al Carrito
 			</button>
-			<p className="border border-5">Stock Disponible: {product?.stock}</p>
 		</div>
 	);
 };
