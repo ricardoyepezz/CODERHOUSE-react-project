@@ -1,35 +1,38 @@
 import "./App.css";
-import Navbar from "./Components/Navbar/Navbar";
-import ItemListContainer from "./Components/ItemListContainer/ItemListContainer";
-import ItemDetailContainer from "./Components/ItemDetail/ItemDetailContainer";
-import CartProducts from "./Components/CartProducts/CartProducts";
+import Navbar from "./components/Navbar/Navbar";
+import ItemListContainer from "./components/ItemListContainer/ItemListContainer";
+import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
+import CartProducts from "./components/CartProducts/CartProducts";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NotFound from "./Components/NotFound/NotFound";
+import NotFound from "./components/NotFound/NotFound";
+import CartContextProvider from "./context/CartContext";
 
 function App() {
 	return (
 		<div className="App">
-			<BrowserRouter>
-				<Navbar />
-				<Switch>
-					<Route exact path="/">
-						<ItemListContainer />
-					</Route>
-					<Route exact path="/category/:categoryId">
-						<ItemListContainer />
-					</Route>
-					<Route exact path="/detail/:paramId">
-						<ItemDetailContainer />
-					</Route>
-					<Route exact path="/Cart">
-						<CartProducts />
-					</Route>
+			<CartContextProvider>
+				<BrowserRouter>
+					<Navbar />
+					<Switch>
+						<Route exact path="/">
+							<ItemListContainer />
+						</Route>
+						<Route exact path="/category/:categoryId">
+							<ItemListContainer />
+						</Route>
+						<Route exact path="/detail/:paramId">
+							<ItemDetailContainer />
+						</Route>
+						<Route exact path="/Cart">
+							<CartProducts />
+						</Route>
 
-					<Route path="*">
-						<NotFound />
-					</Route>
-				</Switch>
-			</BrowserRouter>
+						<Route path="*">
+							<NotFound />
+						</Route>
+					</Switch>
+				</BrowserRouter>
+			</CartContextProvider>
 		</div>
 	);
 }

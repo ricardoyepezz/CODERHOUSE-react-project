@@ -1,14 +1,22 @@
 import "./ItemDetail.css";
-
 import ItemCount from "../ItemCount/ItemCount";
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../context/CartContext";
 
 const ItemDetail = ({ product }) => {
-	const [itemCountOff, setItemCountOff] = useState(true);
+	const { addItem } = useContext(CartContext);
 
-	const onAdd = () => {
-		setItemCountOff(false);
+	const [buy, setBuy] = useState(false);
+	const [qty, setQty] = useState(0);
+
+	const handleBuy = (qty) => {
+		setBuy(true);
+		setQty(qty);
+	};
+
+	const handlePurchase = () => {
+		addItem(product, qty);
 	};
 
 	return (
@@ -24,15 +32,14 @@ const ItemDetail = ({ product }) => {
 			/>
 			<p className="card-title">Descripción: {product?.Description}</p>
 			<p className="card-title">Precio: {product?.Price}</p>
-			{itemCountOff ? (
-				<ItemCount onAdd={onAdd} />
+			{!buy ? (
+				<ItemCount stock={10} onAdd={(qty) => handleBuy(qty)} />
 			) : (
-				<Link exact to="/Cart">
-					<button className="btn btn-outline-dark">Terminar mi Compra</button>
-				</Link>
+				<button onClick={handlePurchase}>
+					<Link to="/Cart"> Purchase </Link>
+				</button>
 			)}
 		</div>
 	);
 };
-
 export default ItemDetail;

@@ -1,17 +1,11 @@
-import { useState, useEffect } from "react";
+import { useContext } from "react";
 import React from "react";
 import CartWidget from "../CartWidget/CartWidget";
-import { Link } from "react-router-dom";
-import { getCategories } from "../DBProducts/products";
+import { Link, NavLink } from "react-router-dom";
+import { CartContext } from "../../context/CartContext";
 
 const Navbar = () => {
-	const [categories, setCategories] = useState([]);
-
-	useEffect(() => {
-		getCategories().then((categories) => {
-			setCategories(categories);
-		});
-	}, []);
+	const { getCantidad } = useContext(CartContext);
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -54,22 +48,24 @@ const Navbar = () => {
 								aria-labelledby="navbarDropdownMenuLink"
 							>
 								<li>
-									{categories.map((cat) => (
-										<Link
-											className="nav-link"
-											key={cat.id}
-											to={`/category/${cat.id}`}
-										>
-											{cat.Description}
-										</Link>
-									))}
+									<NavLink className="nav-link" to={`/category/camaras`}>
+										Cámaras
+									</NavLink>
+								</li>
+								<li>
+									<NavLink className="nav-link" to={`/category/accesorios`}>
+										Accesorios
+									</NavLink>
 								</li>
 							</ul>
 						</li>
 					</ul>
 				</div>
 			</div>
-			<CartWidget />
+			<Link to="/cart">
+				<CartWidget />
+			</Link>
+			<p>{getCantidad}</p>
 		</nav>
 	);
 };
