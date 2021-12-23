@@ -1,54 +1,54 @@
-import React, { createContext, useState } from "react";
+import { createContext, useState } from "react";
+
 export const CartContext = createContext();
 
-const CartContextProvider = ({ children }) => {
+export const CartProvider = ({ children }) => {
 	const [cart, setCart] = useState([]);
-	const [cantidadTotal, setCantidadTotal] = useState(0);
 
-	const addItem = (product, quantity) => {
-		const flag = isInCart(product);
-		console.log(flag);
-		if (flag) {
-			let productoRepetido = cart.find((elemento) => elemento.item === product);
-			productoRepetido.cantidad += quantity;
-			let cartSinRepetido = cart.filter(
-				(elemento) => elemento.item !== product
+	const addItem = (item, quantity) => {
+		const product = {
+			title: item.title,
+			price: item.price,
+			count: quantity,
+			id: item.id,
+			img: item.img,
+			stock: item.stock,
+		};
+
+		const existingIndex = cart.findIndex(
+			(product) => product.title === item.title
+		);
+		if (existingIndex >= 0) {
+			setCart(
+				cart.map((item, index) =>
+					existingIndex === index
+						? { ...item, count: quantity + quantity }
+						: null
+				)
 			);
-			setCart([...cartSinRepetido, productoRepetido]);
 		} else {
-			setCart([...cart, { item: product, cantidad: quantity }]);
+			setCart([...cart, product]);
 		}
-		sumarCantidades();
 	};
 
-	const isInCart = (item) => {
-		console.log(item);
-		return cart.some((product) => product.item === item);
+	const removeItem = (title) => {
+		const existingIndex = cart.findIndex((product) => product.title === title);
+		const cartCopy = Array.from(cart);
+		if (existingIndex <= 0) {
+			cartCopy.splice(existingIndex, 1);
+		}
+		setCart(cartCopy);
 	};
 
-	const removeItem = (item) => {};
-	const cleanCart = () => {};
-
-	const sumarCantidades = () => {
-		let subTotal = 0;
-		cart.forEach((elemento) => {
-			subTotal += elemento.cantidad;
-		});
-		setCantidadTotal(subTotal);
+	const removeAll = () => {
+		setCart([]);
 	};
 
 	return (
 		<CartContext.Provider
-			value={{
-				cart,
-				cantidadTotal,
-				addItem,
-				removeItem,
-				cleanCart,
-			}}
+			value={{ cart, setCart, addItem, removeItem, removeAll }}
 		>
 			{children}
 		</CartContext.Provider>
 	);
 };
-export default CartContextProvider;

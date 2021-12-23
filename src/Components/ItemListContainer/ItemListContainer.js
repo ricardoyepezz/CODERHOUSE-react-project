@@ -1,29 +1,34 @@
 import React, { useEffect, useState } from "react";
-import ItemList from "../ItemList/ItemList";
-import { getProducts } from "../DBProducts/products";
 import { useParams } from "react-router-dom";
+import DataBase from "../../DBProducts.json";
+import ItemList from "../ItemList/ItemList";
 
 const ItemListContainer = () => {
-	const [products, setProducts] = useState([]);
 	const { categoryId } = useParams();
+	const [products, setProducts] = useState([]);
 
+	const getProduct = (data) =>
+		new Promise((resolve, reject) => {
+			setTimeout(() => {
+				if (data) {
+					resolve(data);
+				} else {
+					reject("La ruta no se pudo encontrar");
+				}
+			}, 2000);
+		});
 	useEffect(() => {
-		getProducts(categoryId)
-			.then((item) => {
-				setProducts(item);
-			})
-			.catch((err) => {
-				console.log(err);
-			});
-		return () => {
-			setProducts([]);
-		};
+		getProduct(DataBase)
+			.then((res) =>
+				setProducts(res.filter((product) => product.category === categoryId))
+			)
+			.catch((err) => console.log(err));
 	}, [categoryId]);
 
 	return (
-		<div>
-			<ItemList products={products} />
-		</div>
+		<>
+			<ItemList key={products.id} items={products} />
+		</>
 	);
 };
 export default ItemListContainer;

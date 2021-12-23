@@ -1,12 +1,7 @@
-import { useContext } from "react";
-import React from "react";
 import CartWidget from "../CartWidget/CartWidget";
 import { Link, NavLink } from "react-router-dom";
-import { CartContext } from "../../context/CartContext";
 
 const Navbar = () => {
-	const { getCantidad } = useContext(CartContext);
-
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light bg-light">
 			<div className="container-fluid">
@@ -41,20 +36,20 @@ const Navbar = () => {
 								data-bs-toggle="dropdown"
 								aria-expanded="false"
 							>
-								Categorías
+								Categories
 							</a>
 							<ul
 								className="dropdown-menu"
 								aria-labelledby="navbarDropdownMenuLink"
 							>
 								<li>
-									<NavLink className="nav-link" to={`/category/camaras`}>
-										Cámaras
+									<NavLink className="nav-link" to={`/category/camera`}>
+										Cameras
 									</NavLink>
 								</li>
 								<li>
-									<NavLink className="nav-link" to={`/category/accesorios`}>
-										Accesorios
+									<NavLink className="nav-link" to={`/category/accesories`}>
+										Accesories
 									</NavLink>
 								</li>
 							</ul>
@@ -65,7 +60,6 @@ const Navbar = () => {
 			<Link to="/cart">
 				<CartWidget />
 			</Link>
-			<p>{getCantidad}</p>
 		</nav>
 	);
 };
