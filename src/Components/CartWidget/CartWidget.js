@@ -7,7 +7,7 @@ const CartWidget = () => {
 	return (
 		<div className="justify-content-end me-4">
 			<img src={"../Images/icon-cart.svg"} alt="icon-cart" />
-			<div className=" bg-secondary rounded-pill text-white ">
+			<div className=" bg-secondary rounded-pill text-white">
 				{counterWidget}
 			</div>
 			<br />

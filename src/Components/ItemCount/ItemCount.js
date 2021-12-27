@@ -3,7 +3,7 @@ import { CartContext } from "../../context/CartContext";
 import "./ItemCount.css";
 
 const ItemCount = (item) => {
-	const [count, setCount] = useState(0);
+	const [count, setCount] = useState(1);
 	const { addItem } = useContext(CartContext);
 	const stockItem = item.item.stock;
 	const itemSelected = item.item;

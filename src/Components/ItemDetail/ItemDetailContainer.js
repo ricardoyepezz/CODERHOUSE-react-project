@@ -3,29 +3,22 @@ import { useState, useEffect } from "react";
 import ItemDetail from "../ItemDetail/ItemDetail";
 import { useParams } from "react-router-dom";
 import Loader from "../Loader/Loader";
-import DataBase from "../../DataBase.json";
+import { getFirestore } from "../../firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const ItemDetailContainer = () => {
 	const { itemId } = useParams();
 	const [product, setProduct] = useState();
 
-	const getProduct = (data) =>
-		new Promise((resolve, reject) => {
-			setTimeout(() => {
-				if (data) {
-					resolve(data);
-				} else {
-					reject("La ruta no se pudo encontrar");
-				}
-			}, 1500);
-		});
-
 	useEffect(() => {
-		getProduct(DataBase)
-			.then((res) =>
-				setProduct(res.product.find((product) => product.id === itemId))
-			)
-			.catch((err) => console.log(err));
+		const db = getFirestore();
+
+		const theItem = doc(db, "items", itemId);
+		getDoc(theItem).then((snapshot) => {
+			if (snapshot.exists()) {
+				setProduct(snapshot.data());
+			}
+		});
 	}, [itemId]);
 
 	return <div>{product ? <ItemDetail item={product} /> : <Loader />}</div>;
