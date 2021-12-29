@@ -7,6 +7,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import NotFound from "./components/NotFound/NotFound";
 import { CartProvider } from "./context/CartContext";
 import Home from "./pages/Home";
+import Payment from "./components/Payment/Payment";
 
 function App() {
 	return (
@@ -27,7 +28,7 @@ function App() {
 							path="/item/:itemId"
 							component={ItemDetailContainer}
 						/>
-						<Route exact={true} path="*" component={NotFound} />
+						<Route exact={true} path="/Payment" component={Payment} />
 					</Switch>
 				</CartProvider>
 			</BrowserRouter>

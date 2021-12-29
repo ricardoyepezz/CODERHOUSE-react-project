@@ -47,9 +47,16 @@ const CartProducts = () => {
 				<h3>Total: $ {totalPrice} </h3>
 			</div>
 			<div className="text-center">
-				<Link to="/">
+				<Link to="/Payment">
 					<button className="btn btn-outline-dark flex-shrink-0 mb-2 my-3">
-						Return to shop
+						To Buy!
+					</button>
+				</Link>
+			</div>
+			<div className="text-center">
+				<Link to="/category/camera">
+					<button className="btn btn-outline-dark flex-shrink-0 mb-2 my-3">
+						Keep buying!
 					</button>
 				</Link>
 			</div>
