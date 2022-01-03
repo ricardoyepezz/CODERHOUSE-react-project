@@ -33,7 +33,7 @@ const ItemDetail = ({ item }) => {
 				{
 					<Link exact to="/Cart">
 						<button className="btn btn-outline-dark flex-shrink-0 mb-2">
-							CartView
+							Cart
 						</button>
 					</Link>
 				}

@@ -4,7 +4,7 @@ import Loader from "../Loader/Loader";
 
 const ItemList = ({ items }) => {
 	return (
-		<ul className="d-flex justify-content-sm-around">
+		<ul className="d-flex justify-content-around">
 			{items.length ? (
 				items.map((products) => <Item item={products} key={products.title} />)
 			) : (
