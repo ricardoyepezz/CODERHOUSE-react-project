@@ -10,7 +10,6 @@ const ItemDetail = ({ item }) => {
 
 	const onAddClick = (count) => {
 		setFlag(false);
-		//alert(count + "items were added to the cart");
 		setCart(item);
 	};
 	return (

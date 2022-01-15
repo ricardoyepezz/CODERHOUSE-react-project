@@ -4,7 +4,6 @@ import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import ItemDetailContainer from "./components/ItemDetail/ItemDetailContainer";
 import CartProducts from "./components/CartProducts/CartProducts";
 import { BrowserRouter, Switch, Route } from "react-router-dom";
-import NotFound from "./components/NotFound/NotFound";
 import { CartProvider } from "./context/CartContext";
 import Home from "./pages/Home";
 import Payment from "./components/Payment/Payment";
